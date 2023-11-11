@@ -83,7 +83,7 @@ func (s *Serializer) Serialize(p *data.Point, w io.Writer) (err error) {
 	}
 	buf = append(buf, ' ')
 	buf = serialize.FastFormatAppend(p.Timestamp().UTC().UnixNano(), buf)*/
-	m["timestamp"] = p.Timestamp().UTC().UnixNano()
+	m["timestamp"] = p.Timestamp().UTC().UnixMilli()
 	if values, err := json.Marshal(m); err == nil {
 		buf = append(buf, values...)
 	} else {
